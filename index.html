@@ -14,60 +14,104 @@
     }
 
     body {
-      height: 100vh;
-      background: 
-        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
         url("bg.jpg") no-repeat center center/cover;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
-      text-align: center;
+      padding: 20px;
     }
 
     .card {
+      width: 100%;
+      max-width: 380px;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(8px);
+      border-radius: 18px;
       padding: 25px;
-      max-width: 350px;
-      width: 90%;
-      backdrop-filter: blur(6px);
-      background: rgba(0,0,0,0.4);
-      border-radius: 15px;
+      text-align: center;
     }
 
     h1 {
-      font-size: 18px;
-      margin-bottom: 10px;
+      font-size: 16px;
       opacity: 0.9;
     }
 
     h2 {
-      font-size: 28px;
-      margin-bottom: 10px;
+      font-size: 26px;
+      margin: 8px 0;
     }
 
     .hearts {
-      font-size: 22px;
+      font-size: 20px;
       margin-bottom: 15px;
     }
 
     p {
       font-size: 14px;
       line-height: 1.6;
-      margin-bottom: 20px;
       opacity: 0.9;
+      margin-bottom: 15px;
     }
 
     .contact {
-      border: 1px solid rgba(255,255,255,0.4);
-      padding: 12px;
-      border-radius: 25px;
-      font-size: 16px;
       margin-bottom: 20px;
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.3);
+      font-size: 15px;
+    }
+
+    .qa-box {
+      margin-top: 15px;
+      text-align: left;
+    }
+
+    .qa-box label {
+      font-size: 13px;
+      display: block;
+      margin-bottom: 6px;
+      opacity: 0.8;
+    }
+
+    .qa-box input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .qa-box button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background: #ffffff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .answer {
+      margin-top: 12px;
+      font-size: 14px;
+      padding: 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      display: none;
     }
 
     footer {
+      margin-top: 18px;
       font-size: 12px;
-      opacity: 0.7;
+      opacity: 0.6;
+      text-align: center;
     }
   </style>
 </head>
@@ -76,25 +120,56 @@
 
   <div class="card">
     <h1>I go by the name</h1>
-
     <h2>itz sheriff FROSH</h2>
 
     <div class="hearts">❤️ 💚 💙</div>
 
     <p>
       I just feel relaxed creating.<br>
-      This space represents my calm mind,
-      my focus, and my journey.
+      Calm mind. Focused journey.
     </p>
 
     <div class="contact">
       📞 09049848413
     </div>
 
+    <!-- Q&A SECTION -->
+    <div class="qa-box">
+      <label>Ask me a question 👇</label>
+      <input type="text" id="question" placeholder="Type your question here..." />
+      <button onclick="answerQuestion()">Ask</button>
+
+      <div class="answer" id="answerBox"></div>
+    </div>
+
     <footer>
       © 2025 itz sheriff FROSH
     </footer>
   </div>
+
+  <script>
+    function answerQuestion() {
+      const q = document.getElementById("question").value.toLowerCase();
+      const answerBox = document.getElementById("answerBox");
+
+      let answer = "That’s a good question. I’ll get back to you soon.";
+
+      if (q.includes("name")) {
+        answer = "I go by the name itz sheriff FROSH.";
+      } else if (q.includes("contact") || q.includes("number")) {
+        answer = "You can reach me on 09049848413.";
+      } else if (q.includes("what do you do")) {
+        answer = "I’m a creative mind who enjoys building and learning.";
+      } else if (q.includes("website")) {
+        answer = "This website represents my calm, focus, and journey.";
+      } else if (q.includes("hello") || q.includes("hi")) {
+        answer = "Hello 👋 welcome to my space.";
+      }
+
+      answerBox.style.display = "block";
+      answerBox.innerText = answer;
+    }
+  </script>
 
 </body>
 </html>
